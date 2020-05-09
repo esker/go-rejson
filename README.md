@@ -24,7 +24,7 @@ Go-ReJSON supports both the clients. Use any of the above two client you want, G
 Support for `mediocregopher/radix` and other Redis clients is in our RoadMap. Any contributions on the support for other clients is hearty welcome.
 
 ## Installation
-	go get github.com/nitishm/go-rejson
+	go get github.com/esker/go-rejson
 
 ## Example usage
 ```golang
@@ -36,7 +36,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/nitishm/go-rejson"
+	"github.com/esker/go-rejson"
 	goredis "github.com/go-redis/redis"
 	"github.com/gomodule/redigo/redis"
 )
