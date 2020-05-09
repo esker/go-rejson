@@ -3,7 +3,7 @@ package clients
 import (
 	"fmt"
 	goredis "github.com/go-redis/redis"
-	"github.com/nitishm/go-rejson/rjs"
+	"github.com/esker/go-rejson/rjs"
 	"strings"
 )
 

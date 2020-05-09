@@ -8,7 +8,7 @@ import (
 
 	goredis "github.com/go-redis/redis"
 	"github.com/gomodule/redigo/redis"
-	"github.com/nitishm/go-rejson"
+	"github.com/esker/go-rejson"
 )
 
 // Name - student name

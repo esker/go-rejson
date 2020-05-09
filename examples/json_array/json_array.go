@@ -4,12 +4,12 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"github.com/nitishm/go-rejson/rjs"
+	"github.com/esker/go-rejson/rjs"
 	"log"
 
 	goredis "github.com/go-redis/redis"
 	"github.com/gomodule/redigo/redis"
-	"github.com/nitishm/go-rejson"
+	"github.com/esker/go-rejson"
 )
 
 func Example_JSONArray(rh *rejson.Handler) {
