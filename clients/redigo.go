@@ -24,6 +24,7 @@ func (r *Redigo) JSONSet(key string, path string, obj interface{}, opts ...rjs.S
 	if len(opts) > 1 {
 		return nil, rjs.ErrTooManyOptionals
 	}
+	defer r.Conn.Close()
 	args := make([]interface{}, 0, 5)
 	args = append(args, key, path, obj)
 
@@ -52,6 +53,7 @@ func (r *Redigo) JSONGet(key, path string, opts ...rjs.GetOption) (res interface
 	if len(opts) > 4 {
 		return nil, rjs.ErrTooManyOptionals
 	}
+	defer r.Conn.Close()
 	args := make([]interface{}, 0)
 	args = append(args, key, path)
 
@@ -77,6 +79,7 @@ func (r *Redigo) JSONMGet(path string, keys ...string) (res interface{}, err err
 	if len(keys) == 0 {
 		return nil, rjs.ErrNeedAtleastOneArg
 	}
+	defer r.Conn.Close()
 	args := make([]interface{}, 0)
 	for _, key := range keys {
 		args = append(args, key)
@@ -101,6 +104,7 @@ func (r *Redigo) JSONDel(key string, path string) (res interface{}, err error) {
 	if err != nil {
 		return nil, err
 	}
+	defer r.Conn.Close()
 	return r.Conn.Do(name, args...)
 }
 
@@ -115,6 +119,7 @@ func (r *Redigo) JSONType(key, path string) (res interface{}, err error) {
 	if err != nil {
 		return nil, err
 	}
+	defer r.Conn.Close()
 	return r.Conn.Do(name, args...)
 }
 
@@ -129,6 +134,7 @@ func (r *Redigo) JSONNumIncrBy(key, path string, number int) (res interface{}, e
 	if err != nil {
 		return nil, err
 	}
+	defer r.Conn.Close()
 	return r.Conn.Do(name, args...)
 }
 
@@ -143,6 +149,7 @@ func (r *Redigo) JSONNumMultBy(key, path string, number int) (res interface{}, e
 	if err != nil {
 		return nil, err
 	}
+	defer r.Conn.Close()
 	return r.Conn.Do(name, args...)
 }
 
@@ -157,6 +164,7 @@ func (r *Redigo) JSONStrAppend(key, path, jsonstring string) (res interface{}, e
 	if err != nil {
 		return nil, err
 	}
+	defer r.Conn.Close()
 	return r.Conn.Do(name, args...)
 }
 
@@ -171,6 +179,7 @@ func (r *Redigo) JSONStrLen(key, path string) (res interface{}, err error) {
 	if err != nil {
 		return nil, err
 	}
+	defer r.Conn.Close()
 	return r.Conn.Do(name, args...)
 }
 
@@ -192,6 +201,7 @@ func (r *Redigo) JSONArrAppend(key, path string, values ...interface{}) (res int
 	if err != nil {
 		return nil, err
 	}
+	defer r.Conn.Close()
 	return r.Conn.Do(name, args...)
 }
 
@@ -206,6 +216,7 @@ func (r *Redigo) JSONArrLen(key, path string) (res interface{}, err error) {
 	if err != nil {
 		return nil, err
 	}
+	defer r.Conn.Close()
 	return r.Conn.Do(name, args...)
 }
 
@@ -221,6 +232,7 @@ func (r *Redigo) JSONArrPop(key, path string, index int) (res interface{}, err e
 	if err != nil {
 		return nil, err
 	}
+	defer r.Conn.Close()
 	return r.Conn.Do(name, args...)
 }
 
@@ -232,7 +244,7 @@ func (r *Redigo) JSONArrPop(key, path string, index int) (res interface{}, err e
 func (r *Redigo) JSONArrIndex(key, path string, jsonValue interface{}, optionalRange ...int) (res interface{}, err error) { // nolint: lll
 
 	args := []interface{}{key, path, jsonValue}
-
+	defer r.Conn.Close()
 	ln := len(optionalRange)
 	switch {
 	case ln > 2:
@@ -260,6 +272,7 @@ func (r *Redigo) JSONArrTrim(key, path string, start, end int) (res interface{},
 	if err != nil {
 		return nil, err
 	}
+	defer r.Conn.Close()
 	return r.Conn.Do(name, args...)
 }
 
@@ -281,6 +294,7 @@ func (r *Redigo) JSONArrInsert(key, path string, index int, values ...interface{
 	if err != nil {
 		return nil, err
 	}
+	defer r.Conn.Close()
 	return r.Conn.Do(name, args...)
 }
 
@@ -295,6 +309,7 @@ func (r *Redigo) JSONObjKeys(key, path string) (res interface{}, err error) {
 	if err != nil {
 		return nil, err
 	}
+	defer r.Conn.Close()
 	res, err = r.Conn.Do(name, args...)
 	if err != nil {
 		return
@@ -319,6 +334,7 @@ func (r *Redigo) JSONObjLen(key, path string) (res interface{}, err error) {
 	if err != nil {
 		return nil, err
 	}
+	defer r.Conn.Close()
 	return r.Conn.Do(name, args...)
 }
 
@@ -367,6 +383,7 @@ func (r *Redigo) JSONForget(key, path string) (res interface{}, err error) {
 	if err != nil {
 		return nil, err
 	}
+	defer r.Conn.Close()
 	return r.Conn.Do(name, args...)
 }
 
@@ -381,5 +398,6 @@ func (r *Redigo) JSONResp(key, path string) (res interface{}, err error) {
 	if err != nil {
 		return nil, err
 	}
+	defer r.Conn.Close()
 	return r.Conn.Do(name, args...)
 }
