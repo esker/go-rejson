@@ -1,7 +1,6 @@
 package rejson
 
 import (
-	goredis "github.com/go-redis/redis"
 	redigo "github.com/gomodule/redigo/redis"
 	"github.com/esker/go-rejson/clients"
 	"github.com/esker/go-rejson/rjs"
@@ -11,7 +10,6 @@ import (
 type RedisClient interface {
 	SetClientInactive()
 	SetRedigoClient(redigo.Conn)
-	SetGoRedisClient(conn *goredis.Client)
 }
 
 // SetClientInactive resets the handler and unset any client, set to the handler
@@ -28,9 +26,3 @@ func (r *Handler) SetRedigoClient(conn redigo.Conn) {
 	r.implementation = &clients.Redigo{Conn: conn}
 }
 
-// SetGoRedisClient sets Go-Redis (https://github.com/go-redis/redis) client to
-// the handler
-func (r *Handler) SetGoRedisClient(conn *goredis.Client) {
-	r.clientName = "goredis"
-	r.implementation = &clients.GoRedis{Conn: conn}
-}

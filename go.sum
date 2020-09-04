@@ -1,3 +1,6 @@
+github.com/esker/go-rejson v1.0.0 h1:sDClE5cDsGFMxvXL94YtTS9W+e9QVmQXx8Euk6o04t8=
+github.com/esker/go-rejson v2.0.0+incompatible h1:kK5uZmHuzP9TEpWga37czFOp8Yg49CCq6/tuBa6viXI=
+github.com/esker/go-rejson v2.0.0+incompatible/go.mod h1:aNML2vnyuPhhhgJwZBuO11lCgiSDZQpAv3C73OWUd6g=
 github.com/fsnotify/fsnotify v1.4.7 h1:IXs+QLmnXW2CcXuY+8Mzv/fWEsPGWxqefPtCP5CnV9I=
 github.com/fsnotify/fsnotify v1.4.7/go.mod h1:jwhsz4b93w/PPRr/qN1Yymfu8t87LnFCMoQvtojpjFo=
 github.com/go-redis/redis v6.15.1+incompatible h1:BZ9s4/vHrIqwOb0OPtTQ5uABxETJ3NRuUNoSUurnkew=
